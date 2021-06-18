@@ -29,5 +29,5 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           appdir: "api"
-          procfile: "web: export FLASK_APP=api; flask run"
+          procfile: "web: export FLASK_APP=api; flask run --port $PORT"
 
