@@ -1,6 +1,9 @@
 # comment
 name: train-model
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
 jobs:
   train-model:
     runs-on: ubuntu-latest
