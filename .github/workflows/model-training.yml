@@ -14,9 +14,8 @@ jobs:
         run: |
           git config --global user.email ""
           git config --global user.name "Github Actions"
+          git checkout heroku
           git pull
-          git checkout -B heroku
-          git push --set-upstream origin heroku
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
