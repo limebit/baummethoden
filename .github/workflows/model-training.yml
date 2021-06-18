@@ -17,14 +17,20 @@ jobs:
         run: pip install -r requirements.txt
       - name: Train model
         run: python train.py
-      # - name: Archive production artifacts
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: baummethoden.pickle
-      #     path: models/baummethoden.pickle
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: baummethoden.pickle
+          path: models/baummethoden.pickle
+     - uses: EndBug/add-and-commit@v7
+        with:
+          message: 'added baummethoden'
+          add: 'models/baummethoden.pickle --force'
+          branch: heroku
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          branch: "heroku"
