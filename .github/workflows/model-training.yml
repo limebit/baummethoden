@@ -22,7 +22,8 @@ jobs:
         with:
           name: baummethoden.pickle
           path: models/baummethoden.pickle
-     - uses: EndBug/add-and-commit@v7
+      - name: Push baummethoden
+        uses: EndBug/add-and-commit@v7
         with:
           message: 'added baummethoden'
           add: 'models/baummethoden.pickle --force'
