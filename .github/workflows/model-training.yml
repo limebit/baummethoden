@@ -32,6 +32,7 @@ jobs:
       - name: Push changes to heroku branch
         shell: bash
         run: |
+          git pull
           git push --set-upstream origin heroku || echo "Upstream Branch already exists"
           git add .
           git commit -m "Added new changes" || echo "No changes to commit"
