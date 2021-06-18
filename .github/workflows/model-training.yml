@@ -15,7 +15,7 @@ jobs:
           git config --global user.email ""
           git config --global user.name "Github Actions"
           git pull
-          git checkout heroku
+          git checkout -B heroku
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
