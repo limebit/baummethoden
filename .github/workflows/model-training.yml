@@ -27,7 +27,7 @@ jobs:
         run: |
           git checkout -B heroku
           git add .
-          git commit -m "Added new changes"
+          git commit -m "Added new changes" --author "Github Actions <>"
           git push
           git checkout main
       - name: Deploy to Heroku
