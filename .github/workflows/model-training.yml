@@ -22,12 +22,14 @@ jobs:
         with:
           name: baummethoden.pickle
           path: models/baummethoden.pickle
-      - name: Push baummethoden
-        uses: EndBug/add-and-commit@v7
-        with:
-          message: 'added baummethoden'
-          add: 'models/baummethoden.pickle --force'
-          branch: heroku
+      - name: Push changes to heroku branch
+        shell: bash
+        run: |
+          git checkout -B heroku
+          git add .
+          git commit -m "Added new changes"
+          git push
+          git checkout main
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
