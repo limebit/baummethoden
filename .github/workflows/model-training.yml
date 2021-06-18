@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Switch to heroku branch
+        shell: bash
+        run: |
+          git config --global user.email ""
+          git config --global user.name "Github Actions"
+          git checkout -B heroku
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -17,21 +23,17 @@ jobs:
         run: pip install -r requirements.txt
       - name: Train model
         run: python train.py
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: baummethoden.pickle
-          path: models/baummethoden.pickle
+      # - name: Archive production artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: baummethoden.pickle
+      #     path: models/baummethoden.pickle
       - name: Push changes to heroku branch
         shell: bash
         run: |
-          git config --global user.email ""
-          git config --global user.name "Github Actions"
-          git checkout -B heroku
           git add .
           git commit -m "Added new changes"
           git push
-          git checkout main
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
