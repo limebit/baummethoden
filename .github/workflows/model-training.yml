@@ -25,9 +25,11 @@ jobs:
       - name: Push changes to heroku branch
         shell: bash
         run: |
+          git config --global user.email ""
+          git config --global user.name "Github Actions"
           git checkout -B heroku
           git add .
-          git commit -m "Added new changes" --author "Github Actions <>"
+          git commit -m "Added new changes"
           git push
           git checkout main
       - name: Deploy to Heroku
