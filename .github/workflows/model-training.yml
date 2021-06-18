@@ -30,4 +30,6 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           appdir: "api"
           procfile: "web: flask run --port=80"
+        env:
+          FLASK_APP: app
 
