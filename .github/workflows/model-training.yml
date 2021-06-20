@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Switch to heroku branch
+        shell: bash
+        run: |
+          git config --global user.email ""
+          git config --global user.name "Github Actions"
+          git pull
+          git checkout heroku
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -25,10 +32,6 @@ jobs:
       - name: Push changes to heroku branch
         shell: bash
         run: |
-          git config --global user.email ""
-          git config --global user.name "Github Actions"
-          git pull
-          git checkout heroku
           git add .
           git commit -m "Update files" || echo "No changes to commit"
           git push
