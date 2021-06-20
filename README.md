@@ -20,6 +20,17 @@
 - install new dependency: `pip install sklearn`
 - save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
 
+## GitHub Actions Deployment
+
+- Create a heroku account
+- Create a new app and save the name
+- Go to your Account Settings and save the API Key
+- Go to the secrets in the settings of your GitHub repository
+- Add the API Key as `HEROKU_API_KEY`
+- Add the app name as `HEROKU_APP_NAME`
+- Add your email address (the one you used for creating the heroku account) as `HEROKU_EMAIL`
+- The github actions scripts assumes that a `heroku` branch exists. If it doesn't, create the branch
+
 ## Useful commands
 
 - init new git repository: `git init`

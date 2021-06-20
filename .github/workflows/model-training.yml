@@ -14,9 +14,8 @@ jobs:
         run: |
           git config --global user.email ""
           git config --global user.name "Github Actions"
-          git config --global pull.rebase true
           git pull
-          git checkout -B heroku
+          git checkout heroku
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -33,10 +32,8 @@ jobs:
       - name: Push changes to heroku branch
         shell: bash
         run: |
-          git pull origin heroku
-          git push --set-upstream origin heroku || echo "Upstream Branch already exists"
           git add .
-          git commit -m "Added new changes" || echo "No changes to commit"
+          git commit -m "Update files" || echo "No changes to commit"
           git push
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
