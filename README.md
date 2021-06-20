@@ -30,6 +30,7 @@
 - Add the app name as `HEROKU_APP_NAME`
 - Add your email address (the one you used for creating the heroku account) as `HEROKU_EMAIL`
 - The github actions scripts assumes that a `heroku` branch exists. If it doesn't, create the branch
+- After the first successful github actions deployment, you should be able to access the api via `https://<your-app-name>.herokuapp.com`
 
 ## Useful commands
 
